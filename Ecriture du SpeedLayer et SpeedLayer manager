@@ -1,0 +1,28 @@
+** Ecriture du SpeedLayer et SpeedLayer manager **
+
+
+Ici on va récupérer des données
+
+
+
+On récupère les settings des agregations (combien de dofférents)
+
+On initialise les buckets
+
+aggreg event vient construire une clé valeur à assigner au current bucket
+
+Agreger les valeurs des curreents et previous
+
+
+
+
+1. On crée une instance du S.
+2. On récupère les settings de l'agrégation
+3. Récupérer les agrégations du current bucket et du previous
+4. Set les clés valeurs dans le current et previous
+5. Assembler valeurs des memes clés du current et previous - fusionner valeurs
+
+On construit des clés à partir l'eventkey(libId, mediaId pae ex) et l'output
+Plus facile pour Redis qui va recevoir une valeur simple et non une valeur objet.
+
+Besoin de remettre la clé de base pour le batch.
