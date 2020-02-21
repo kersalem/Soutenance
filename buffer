@@ -1,0 +1,77 @@
+** Mise en place du double buffering **
+
+
+Le buffer est la mémoire tampon, zone située dans un disque dur ou dans la mémoire vive d'un ordinateur (pour ce projet le travail s'effectue sur Redis ou sur la mémoire vive) afin de conserver des données pendant un moment en vue de leur utilisation.
+
+ La mémoire tampon sert à stocker temporairement des données, une sorte de salle d'attente des données qui transitent de manière éphémère.
+
+Sans la mémoire tampon et les tampons l'ordinateur fonctionnera moins efficacement et le temps d'attente sera trop long.
+
+Dans notre cas cela permet de stocker nos résultats du SpeedLayer car on ne veut pas les conserver dans le temps, le travail se fait au travers de données éphémères. On travaille sur maximum 2 heures et plus précisément, sur les deux dernières heures, l'heure précédente et l'heure courante.
+
+Lorsque que le calcul commence sur la troisième heure, on supprime l'heure précédente, l'heure en cours devient l'heure précédente et l'heure en cours se réinitialise.
+
+Ce concept évite l'encombrement des données d'un port entrant à un port sortant.
+
+Le fonctionnement du buffer permet de stocker des données sur une courte période et conserve les données avant leur utilisation.
+
+Les articles traitant du buffer évoque un inconvénient concernant le dépassement de tampon, qui est évité au sein de ce projet avec l'utilisation de Redis( données stockées en base de données).
+
+Mise en application : 
+
+Pour une query (requête) donnée, on prend en compte 4 cas qui couvre l'ensemble des possibilités.
+
+Début du dernier batch 11h00 : calcul d'agregation de [10h..11h[
+Fin du dernier batch 11h03
+Previous du speed : données de [10h..11h[
+Current du speed : données de [11h..maintenant[
+
+uery sur une période [debutQuery..maintenant[ : 
+
+Une query est initié par le front à 10h58 mais peut être traitée à 11H02
+
+CAS 1 :
+query qui arrive 10h58 < 11h  
+	* maintenant = 10h59 heure de traitement de la query
+	* result des aggregation = batch [debutQuery..10h[ 
+	                           + speed current [10h..10h59[ 
+CAS 2 :
+query qui arrive à 10h58  
+	* maintenant = 11h02
+	* result des aggregation = batch [debutQuery..10h[ 
+	                           + speed previous [10h00..11h00[
+	                           + speed current [11h00..11h02[
+CAS 3:
+query qui arrive à 11h01  (batch en cours)
+	* maintenant = 11h02
+	* result des aggregation = batch [debutQuery..10h[ 
+	                           + speed previous [10h00..11h00[
+	                           + speed current [11h00..11h02[
+
+CAS 4 :
+query qui arrive à 11h04  (batch en cours)
+	* maintenant = 11h04
+	* result des aggregation = batch [debutQuery..11h[
+	                           + speed current [11h00..11h04[
+
+
+
+
+
+
+Bibliographie : 
+
+Buffer : https://www.journaldunet.fr/web-tech/dictionnaire-du-webmastering/1445278-buffer-definition-et-fonctionnement-pratique/
+
+
+Glossaire : 
+buffer = zone mémoire de taille limitée servant à stocker des données (généralement de façon temporaire). 
+
+
+Brouillon :
+
+- merge des values de l'heure en cours et de l'heure précédente pour chaque agregator
+
+Qu'est ce que le previous et current. font partie du SpeedLayer.
+
+une fois que le B. est fini on écrit des nouvelles valeurs dans le b. donc B.à jour

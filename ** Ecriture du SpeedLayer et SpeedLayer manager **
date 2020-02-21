@@ -1,0 +1,12 @@
+** Ecriture du SpeedLayer et SpeedLayer manager **
+
+
+Ici on va récupérer des données
+
+
+
+On récupère les settings des agregations (combien de dofférents)
+
+On initialise les buckets
+
+aggreg event vient construire une clé valeur à assigner au current bucket
