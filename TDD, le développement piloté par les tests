@@ -1,10 +1,10 @@
-** TDD, le développement piloté par les tests ** 
+** TDD, le développement piloté par les tests **
 
 est une technique de développement mêlant intimement l’écriture des tests unitaires, la programmation et l’amélioration continue du code (encore appelée refactorisation).
 
-La méthode traditionnelle de la rédaction des tests unitaires consiste à rédiger les tests d'une portion d'un programme (appelé unité) afin de vérifier la validité de l'unité implémentée. 
+La méthode traditionnelle de la rédaction des tests unitaires consiste à rédiger les tests d'une portion d'un programme (appelé unité) afin de vérifier la validité de l'unité implémentée.
 
-On rédige donc les tests unitaires avant de procéder à la phase de codage. 
+On rédige donc les tests unitaires avant de procéder à la phase de codage.
 
 La démarche à suivre pour mettre en place cette méthode est décomposée en trois phases appelé RGR (aussi appelé la Mantra).
 
@@ -29,21 +29,21 @@ Les intérêts du TDD :
 En commençant par les tests permet de s'assurer que leur écriture ne sera remise à plus tard voir pas du tout.
 
 * Réflexion en amont, clarification des détails de l'interface et du comportement
-Le développeur va devoir penser aux détails de la méthode dont il a besoin pour écrire la spécification. Il va également s's'interroger sur le nom de la méthode, sa valeur de retour, ses paramètres, comportement, cela permet de clarifier la conception et d'écrire seulement du code utile. 
+Le développeur va devoir penser aux détails de la méthode dont il a besoin pour écrire la spécification. Il va également s's'interroger sur le nom de la méthode, sa valeur de retour, ses paramètres, comportement, cela permet de clarifier la conception et d'écrire seulement du code utile.
 
 * Vérification démontrable, répétable et automatisé
  Le fait de disposer d'un grand nombre de test permet de s'assurer de la solidité et garantie du code.
 
-* Non présence de régression
- Lorsqu'un développeur modifie une méthode existante, il peut relancer les tests unitaires afin de s'assurer que sa modification n'a pas impacté l'existant et donc cela offre un feedback immédiat. 
+* Assurer la non-régression du code.
+ Lorsqu'un développeur modifie une méthode existante, il peut relancer les tests unitaires afin de s'assurer que sa modification n'a pas impacté l'existant et donc cela offre un feedback immédiat.
 
 
-Gloassaire : 
+Gloassaire :
 TDD : Test Driven Development/Le développement piloté par les tests.
 
-chai : 
+chai :
 
-Bibliographie : 
+Bibliographie :
 
 TDD
 http://igm.univ-mlv.fr/~dr/XPOSE2009/TDD/pagesHTML/PresentationTDD.html
@@ -63,3 +63,11 @@ Ecriture de mes tests lors de l'implémentation du double buffering. Lors de la 
     Trouver les erreurs rapidement
     Sécuriser les évolutions de votre code
     Documenter le code
+
+
+
+////////////////////////////////////////
+
+Mocha : framework de test Javascript / it et describe
+chai : Bibliothèque d'assertion node
+Jest : front et back
