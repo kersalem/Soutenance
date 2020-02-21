@@ -1,0 +1,38 @@
+Données
+
+
+Les applications rendues possibles pour nos clients et en interne :
+
+• Connaître les utilisateurs ayant consulté un ou plusieurs médias suite à un partage
+
+• Identifier un même utilisateur quel que soit son parcours au sein de ubstream (Cross-devices et cross-hubs)
+
+• Trier les médias d’un hub par nombre de consultations ou de partage
+
+• Consulter les statistiques de médias détaillées par variante (langue) d’un même média
+
+• Consulter les statistiques d’une sélection manuelle de médias
+
+• Intégrer l’ensemble du reporting dans lambda et ainsi garantir la cohérence des données entre statistiques et reporting (Collecte par un seul et même système)
+
+• Créer simplement et rapidement de nouvelles statistiques
+
+• Consulter les statistiques globales de ubstream
+
+• Consulter le  parcours d’un utilisateur et son historique
+	o Nombre de sessions
+	o Géolocalisation
+	o Devices utilisés
+	o Durée des sessions
+	o Contenu des sessions
+		▪ Consultations de médias
+		▪ Durée de consultation
+		▪ Partages / Ajout aux favoris
+		▪ Changement de Hub
+		▪ Changement de collection
+
+• Intégrer simplement des statistiques de diffusion et d’usage dans l’ISS
+
+• Evaluer la performance marketing de notre solution, notamment des entonnoirs de conversion (1ère visite => Création d’un compte => Abonnement)
+
+• Suivre le parcours de dissémination (Lib-it/Ajout aux favoris) d’un média entre différents hubs et  pouvoir  calculer  des  éléments  de  rétribution  (Rétribution  d’un  influenceur  générant beaucoup de consultations/partages/... de médias appartenant à des marques depuis son hub
