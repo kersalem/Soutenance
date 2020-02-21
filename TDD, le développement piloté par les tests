@@ -1,0 +1,65 @@
+** TDD, le développement piloté par les tests ** 
+
+est une technique de développement mêlant intimement l’écriture des tests unitaires, la programmation et l’amélioration continue du code (encore appelée refactorisation).
+
+La méthode traditionnelle de la rédaction des tests unitaires consiste à rédiger les tests d'une portion d'un programme (appelé unité) afin de vérifier la validité de l'unité implémentée. 
+
+On rédige donc les tests unitaires avant de procéder à la phase de codage. 
+
+La démarche à suivre pour mettre en place cette méthode est décomposée en trois phases appelé RGR (aussi appelé la Mantra).
+
+Les deux premières phases sont nommées d’après la couleur de la barre de progression dans les outils de test unitaires comme Chai (Red pour échec et Green pour réussite)
+
+    R (Red): écrire un code de test et les faire échouer
+    G (Green) : écrire le code métier qui valide le test
+    R (Refractor) : remaniement du code afin d'en améliorer la qualité
+
+Le cycle de développement préconisé par TDD comporte cinq étapes :
+
+    Ecriture d'un premier test
+    Exécuter le test et vérifier qu'il échoue (car le code qu'il teste n'a pas encore été implémenté)
+    Ecriture de l'implémentation pour faire passer le test (il existe différentes manières de corriger ce code)
+    Exécution des tests afin de contrôler que les tests passent et dans ce présent l'implémentation respectera les règles fonctionnelles des tests unitaires
+    Remaniement (Refractor) du code afin d'en améliorer la qualité mais en conservant les mêmes fonctionnalités
+
+
+Les intérêts du TDD :
+
+* Les tests unitaires sont réellement écrits
+En commençant par les tests permet de s'assurer que leur écriture ne sera remise à plus tard voir pas du tout.
+
+* Réflexion en amont, clarification des détails de l'interface et du comportement
+Le développeur va devoir penser aux détails de la méthode dont il a besoin pour écrire la spécification. Il va également s's'interroger sur le nom de la méthode, sa valeur de retour, ses paramètres, comportement, cela permet de clarifier la conception et d'écrire seulement du code utile. 
+
+* Vérification démontrable, répétable et automatisé
+ Le fait de disposer d'un grand nombre de test permet de s'assurer de la solidité et garantie du code.
+
+* Non présence de régression
+ Lorsqu'un développeur modifie une méthode existante, il peut relancer les tests unitaires afin de s'assurer que sa modification n'a pas impacté l'existant et donc cela offre un feedback immédiat. 
+
+
+Gloassaire : 
+TDD : Test Driven Development/Le développement piloté par les tests.
+
+chai : 
+
+Bibliographie : 
+
+TDD
+http://igm.univ-mlv.fr/~dr/XPOSE2009/TDD/pagesHTML/PresentationTDD.html
+
+https://www.fabernovel.com/fr/engineering/pourquoi-vous-auriez-interet-a-utiliser-le-tdd-pour-creer-votre-application
+
+
+
+
+
+Ecriture de mes tests lors de l'implémentation du double buffering. Lors de la phase d'écriture du code de Speedlayer, Michel mon tuteur entreprise, rédigeait les tests et je devaient à partir de ces tests, rédiger le code.
+
+
+
+
+
+    Trouver les erreurs rapidement
+    Sécuriser les évolutions de votre code
+    Documenter le code
