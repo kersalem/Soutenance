@@ -2,3 +2,67 @@ Bac à sables
 
 * Redis
 * RabbitMQ
+
+
+
+
+import { IFilterKeys } from 'bee-statistics-client';
+import * as _ from 'lodash';
+
+export interface IKeys {
+    [key: string]: string;
+}
+
+export interface IBufferValue {
+    [property: string]: number;
+}
+
+export interface  IBufferQueryResult {
+    [property: string]: number[];
+};
+
+export interface IBufferSpeedLayer {
+    set(keys: IKeys, value: IBufferValue): IBufferValue;
+    setProperty(keys: IKeys, property: string, value: number): IBufferValue;
+    incrProperty(keys: IKeys, property: string): IBufferValue;
+    addProperty(keys: IKeys, property: string, value: number): IBufferValue;
+    query(filter: IFilterKeys): IBufferQueryResult
+}
+
+export type IBufferSpeedLayerFactory = () => IBufferSpeedLayer
+
+export const memoryBufferSpeedLayerFactory = () => new MemoryBufferSpeedLayer();
+
+export class MemoryBufferSpeedLayer implements IBufferSpeedLayer {
+    // todo remplace any par ton implementation du buffer
+    private data: Map<IKeys, IBufferValue>;
+
+    constructor() {
+        this.data = new Map();
+    }
+
+    public set(keys: IKeys, value: IBufferValue): IBufferValue {
+        this.data.set(keys, value);
+        return this.data.get(keys) || {};
+    }
+    setProperty(keys: IKeys, property: string, value: number): IBufferValue {
+        return {};
+    }
+    incrProperty(keys: IKeys, property: string): IBufferValue {
+        return {};
+    }
+    addProperty(keys: IKeys, property: string, value: number): IBufferValue {
+        return {};
+    }
+    query(filter: IFilterKeys): IBufferQueryResult {
+        // 1er typage aujourd'hui obsolète
+        // par exemple, un resultat pour une key 'libId1', 'mediaId1' et un output value { count: 2, duration: 1000 }
+        // serait au format suivant : [{ libId: 'libId1', mediaId: 'mediaId1', count: 2, duration: 1000 }]
+        // S'il y a plusieurs objet le tableau contiendra plusieurs objets : [ {...}, {...}, ... ]
+        // EVOLUTION VERS LE TYPE IBufferQueryResult
+        // on sait que les keys sont inutiles pour calculer le resultat final de l'aggregation dnas SpeedLayerAggregation
+        // par exemple, le resultat pour une key 'libId1', 'mediaId1' et un output value { count: 2, duration: 1000 }
+        // aura le format suivant : { count: [2], duration: [1000] }
+        return {};
+    }
+}

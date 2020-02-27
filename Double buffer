@@ -1,0 +1,83 @@
+Idée générale : Spécialiser chaque class et déporter les tests à chaque niveau
+
+
+Partie spécifique :
+Speedlayer = connaissance métiers
+
+Partie générique : (pas de métier ici)
+
+Buffer et double buffer : range des valeurs et rend ces valeurs via un filtre [{ clé: {valeur}]
+plus de settings dans le buffer puisque pas de métiers ici
+
+après le filtrage toutes les valeurs sont mélangées donc plus besoin de garder les clés libId et mediaId par ex.
+
+
+Test buffer : Permet de tester tous les cas alors que le double buffer plus haut va s'assurer que les tests du buffer sont bien appeler en un seul test. Ranger les propriétés.
+
+leur role :
+Gérer des objets et les associer à des clés
+
+
+Avant le Speedlayer calculait tout comme le B. désormais, avec la propriété enabled( true, false) SpeedLayer on peut mettre de côté des events à ne pas prendre en compte dans le S. Spécifié dans le BatchLayer Type
+Pratique lorsqu'on ne sait pas calculer ex, "visitor" très complexe à calculer et "logical Data structure"
+ou lorsque l'on a pas besoin de calcul à temps réel sur certaines valeurs mais seulement des estimations / prédictions = factures clients pas besoin de S.
+
+Permet de réduire le temps de calcul  et calculer ce qui est nécessaire.
+
+
+
+
+
+Amelioration possible :
+
+Passer de MONO INSTANCE à MULTI INSTANCE
+Redis => L'utilisation de Redis prévue dans le diagramme de
+         Gantt est finalement prématuré puisqu'avec les optimisations mises en place on a déjà un temps de rendu rapide. Redis pourra être mis en place lorsque l'entreprise augmentera sa clientèle par 3.
+
+
+Particularité du double buffer ...
+contient les 2 buffers et peut freeze Buffer
+
+Combinatoire : choses liées entre elles.
+
+
+
+Test buffer sur un autre fichier ûisque le fichier de test faisait plus de 700 lignes
+
+
+
+A faire :
+Should returns the key-value map (aggregationId, aggregationResult) with aggregated events session l303 manager
+onStartingCurrentBucketAggregationOnBatchLayer l387 manager
+onCurrentBucketAggregationDoneOnBatchLayer l 393 Manager
+
+onCurrentBucketAggregationDoneOnBatchLayer: for a given aggregation type, process event l806 Speed 4 * it
+
+Evolution structure :
+
+const expectedAggregationsResult: IBufferKeysValues[] = [
+    { count: 15 },
+    { count: 25 },
+    { count: 30 },
+];
+(modifié)
+
+
+16 h 20
+Resultat optimisé pour utilisation dans SpeedLayerAggregation :
+const expectedAggregationsResult: IBufferKeysValues[] = {
+    count: [ 15, 25, 30 ]
+};
+(modifié)
+16 h 23
+const expectedAggregationsResult: IBufferKeysValues[] = [
+    { count: 15, duration: 100 },
+    { count: 25, duration: 150 },
+    { count: 30, duration: 200 },
+];
+16 h 23
+const expectedAggregationsResult: IBufferKeysValues[] = {
+    count: [ 15, 25, 30 ],
+    duration: [100, 150, 200],
+    exist: [1, 1, 1],
+};

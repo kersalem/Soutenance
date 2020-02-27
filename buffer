@@ -17,7 +17,10 @@ Le fonctionnement du buffer permet de stocker des données sur une courte pério
 
 Les articles traitant du buffer évoque un inconvénient concernant le dépassement de tampon, qui est évité au sein de ce projet avec l'utilisation de Redis( données stockées en base de données).
 
-Mise en application : 
+
+
+
+Mise en application :
 
 Pour une query (requête) donnée, on prend en compte 4 cas qui couvre l'ensemble des possibilités.
 
@@ -26,25 +29,25 @@ Fin du dernier batch 11h03
 Previous du speed : données de [10h..11h[
 Current du speed : données de [11h..maintenant[
 
-uery sur une période [debutQuery..maintenant[ : 
+uery sur une période [debutQuery..maintenant[ :
 
 Une query est initié par le front à 10h58 mais peut être traitée à 11H02
 
 CAS 1 :
-query qui arrive 10h58 < 11h  
+query qui arrive 10h58 < 11h
 	* maintenant = 10h59 heure de traitement de la query
-	* result des aggregation = batch [debutQuery..10h[ 
-	                           + speed current [10h..10h59[ 
+	* result des aggregation = batch [debutQuery..10h[
+	                           + speed current [10h..10h59[
 CAS 2 :
-query qui arrive à 10h58  
+query qui arrive à 10h58
 	* maintenant = 11h02
-	* result des aggregation = batch [debutQuery..10h[ 
+	* result des aggregation = batch [debutQuery..10h[
 	                           + speed previous [10h00..11h00[
 	                           + speed current [11h00..11h02[
 CAS 3:
 query qui arrive à 11h01  (batch en cours)
 	* maintenant = 11h02
-	* result des aggregation = batch [debutQuery..10h[ 
+	* result des aggregation = batch [debutQuery..10h[
 	                           + speed previous [10h00..11h00[
 	                           + speed current [11h00..11h02[
 
@@ -59,13 +62,13 @@ query qui arrive à 11h04  (batch en cours)
 
 
 
-Bibliographie : 
+Bibliographie :
 
 Buffer : https://www.journaldunet.fr/web-tech/dictionnaire-du-webmastering/1445278-buffer-definition-et-fonctionnement-pratique/
 
 
-Glossaire : 
-buffer = zone mémoire de taille limitée servant à stocker des données (généralement de façon temporaire). 
+Glossaire :
+buffer = zone mémoire de taille limitée servant à stocker des données (généralement de façon temporaire).
 
 
 Brouillon :
