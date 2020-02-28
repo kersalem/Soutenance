@@ -1,32 +1,65 @@
 
 
-A partir de ce fichier excel, on va suivre le cheminement d'un event en détaillant les différents status de B et du S. lorsqu'un évènement est "arrive/ est enclenché / pris en charge"
+Ce fichier excel permet de visualiser les différents cas possible lorsqu'un event est déclenché / pris en charge en détaillant les différents "status/comportement" de B et du S. à un moment donné.
 
 ////////////////// Cheminement event
-On va s'intéresser à l'évènement OpenMedia du 10 janv à 9h59
-On distingue différentes catégories :
+On va s'intéresser à l'évènement OpenMedia
+On peut regrouper les colonnes en différentes catégories :
 
 1-2    = Temps qui passe
 3-5-6  = Etat du B. et du S. à l'instant T
 4      = events du B. envoyés au speed
 
-Colonne 1-2 : On va s'intéresser à l'évènement OpenMedia du 10 janv à 9h59
-Colonne 3 : le B. travaille sur la plage horaire de l'origine jusqu'à 9h
+Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 9h59
+Colonne 3 : Le B. travaille sur la plage horaire de l'origine jusqu'à 9h
 Colonne 4 : Le B.est en cours de traitement sur cette heure (9h à 10h02) donc n'envoie pas d'event au S.
 Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 9h à 10h02
 Colonne 6 : Puisque le previous a travaillé de 8h à 9h
 
-Si l'event est déclenché à 10h
-le B. va envoyer l'event "Starting computing BL" au speed qui va autoriser le switch des données du current au previous et vider le current // Autoriser le changement de buffer
-ici le S. current travaille désormais de 10h à maintenant le previous de 9h à 10h
+Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h00
+Colonne 3 : Le B. travaille sur la plage horaire de l'origine jusqu'à 9h
+Colonne 4 : Le B. démarre une nouvelle plage horaire et envoie l'event Starting Computing au BL au S. ce qui va autoriser le switch des données du current au previous et vider le current // Autoriser le changement de buffer
+Colonne 5 : Le S. current travaille désormais de 10h à maintenant
+Colonne 6 : Le previous a travaillé de 9h à 10h
 
-Si l'envent arrive à 10h02 le B. va envoyer l'event Compured qui va "faire sauter" le previous et travaille uniquement le current
+Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h01
+Colonne 3 : Le B. travaille sur la plage horaire de l'origine jusqu'à 9h
+Colonne 4 : Le B.est en cours de traitement sur cette heure (9h à 10h02) donc n'envoie pas d'event au S.
+Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 10h à maintenant
+Colonne 6 : Le previous a travaillé de 9h à 10h
 
-Si l'event arrive à 10h15 c'est le speedLayer current qui va prendre en charge ce nouvel event
 
+Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h02
+Colonne 3 : le B. travaille sur la plage horaire de l'origine jusqu'à 10h
+Colonne 4 : Le B.est a terminé le traitement jusqu'à 10h inclu et envoie l'event BL computed au S. ce qui va "faire sauter" le previous et travaille uniquement le current
+Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 10h à maintenant
+Colonne 6 : Le previous a travaillé de 9h à 10h et garde son contenu jusqu'au prochain event Starting Computing au BL
+
+
+Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h15
+Colonne 3 : Le B. travaille sur la plage horaire de l'origine jusqu'à 10h
+Colonne 4 : Le B.est en cours de traitement sur cette heure (9h à 10h02) donc n'envoie pas d'event au S.
+Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 10h à maintenant
+Colonne 6 : Le previous a travaillé de 9h à 10h
+
+Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h59
+Colonne 3 : Le B. travaille sur la plage horaire de l'origine jusqu'à 10h
+Colonne 4 : Le B.est en cours de traitement sur cette heure (9h à 10h02) donc n'envoie pas d'event au S.
+Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 10h à maintenant
+Colonne 6 : Le previous a travaillé de 9h à 10h
+
+
+
+La query est combien de médias ont été consultés sur les 30 derniers jours :
+
+On peut catégoriser les colonnes :
+A/B = temps qui passe
+C/E/F = B. et S.
+D = envent du B. envoyé au speed
+G/H/I = query
 
 ////////////////// Cheminement requête à 9h59
-Colonne 1 : Une requête est lancé sur les 3O derniers jours
+Colonne 1 : Une requête est lancé sur les 3O derniers jours (l'utilisateur d'un Hub ouvre le panneau de stat
 Colonne 2 : La période concernée est de J-29 0h00 à auj 9h59
 Colonne 3 : On récupère les infos du B. de j-29 0h00 à 9h00 et les infos récoltées du S. current de 9h à maintenant
 
@@ -58,29 +91,3 @@ Colonne 3 : On récupère les infos du B. de j-29 0h00 à 10h00 et les infos du 
 Colonne 1 : Une requête est lancé sur les 3O derniers jours
 Colonne 2 : La période concernée est de J-29 0h00 à auj 10h59
 Colonne 3 : On récupère les infos du B. de j-29 0h00 à 10h00 et les infos du S current de 10h à maintenant
-
-
-
-
-
-
-
-
-////////////////////////////////////NOTES
-Voici un fichier excel qui permet de visualiser .... pour un event donnée
-1. ce qui se passe lorsqu'un event est pris en charge à un instant T. ex openMedia / repercution du B. et du S. (current/ previous) cad dire détail de l'état du B et S. à ce moment là.
-2. ce qui se passe lorsqu'une query est traitée ex . combien de média ont été consultés sur les 30 derniers jours.
-
-On peut catégoriser les colonnes :
-A/B = temps qui passe
-C/E/F =
-D = envent du B. envoyé au speed
-
-G/H/I = query
-
-
-Starting Computing BL = switch previous - current
-BL Compured = calcul B. terminé
-
-origine du démarrage du B; pour le systeme (première agregation dans le B.)
-
