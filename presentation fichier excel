@@ -16,11 +16,15 @@ Colonne 4 : Le B.est en cours de traitement sur cette heure (9h à 10h02) donc n
 Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 9h à 10h02
 Colonne 6 : Puisque le previous a travaillé de 8h à 9h
 
+=> Event pris en charge par le current SpeedLayer
+
 Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h00
 Colonne 3 : Le B. travaille sur la plage horaire de l'origine jusqu'à 9h
 Colonne 4 : Le B. démarre une nouvelle plage horaire et envoie l'event Starting Computing au BL au S. ce qui va autoriser le switch des données du current au previous et vider le current // Autoriser le changement de buffer
 Colonne 5 : Le S. current travaille désormais de 10h à maintenant
 Colonne 6 : Le previous a travaillé de 9h à 10h
+
+=> Event pris en charge .... le current S. tjrs
 
 Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h01
 Colonne 3 : Le B. travaille sur la plage horaire de l'origine jusqu'à 9h
@@ -28,12 +32,15 @@ Colonne 4 : Le B.est en cours de traitement sur cette heure (9h à 10h02) donc n
 Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 10h à maintenant
 Colonne 6 : Le previous a travaillé de 9h à 10h
 
+=> Event pris en charge .... le current S. tjrs
 
-Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h02
+Colonne1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h02
 Colonne 3 : le B. travaille sur la plage horaire de l'origine jusqu'à 10h
 Colonne 4 : Le B.est a terminé le traitement jusqu'à 10h inclu et envoie l'event BL computed au S. ce qui va "faire sauter" le previous et travaille uniquement le current
 Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 10h à maintenant
 Colonne 6 : Le previous a travaillé de 9h à 10h et garde son contenu jusqu'au prochain event Starting Computing au BL
+
+=> Event pris en charge .... le current S. tjrs
 
 
 Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h15
@@ -42,11 +49,15 @@ Colonne 4 : Le B.est en cours de traitement sur cette heure (9h à 10h02) donc n
 Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 10h à maintenant
 Colonne 6 : Le previous a travaillé de 9h à 10h
 
+=> Event pris en charge .... le current S. tjrs
+
 Colonne 1-2 : Lorsque l'évènement est déclenché le 10 janv à 10h59
 Colonne 3 : Le B. travaille sur la plage horaire de l'origine jusqu'à 10h
 Colonne 4 : Le B.est en cours de traitement sur cette heure (9h à 10h02) donc n'envoie pas d'event au S.
 Colonne 5 : C'est le Current qui va traiter cet event car il travaille de 10h à maintenant
 Colonne 6 : Le previous a travaillé de 9h à 10h
+
+=> Event pris en charge .... le current S. tjrs
 
 
 

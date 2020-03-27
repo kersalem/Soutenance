@@ -71,3 +71,14 @@ Ecriture de mes tests lors de l'implémentation du double buffering. Lors de la 
 Mocha : framework de test Javascript / it et describe
 chai : Bibliothèque d'assertion node
 Jest : front et back
+
+
+
+sinon.spy()
+Les spy permettent d'espionner un objet (une méthode de l'objet) et de vérifier qu'elle a bien été appelée avec les bons arguments.
+    calledOnce permet de vérifier que la méthode n'a été appelée qu'une seule fois
+    a méthode withArgs() qui permet de vérifier que les arguments passés à cette fonction sont bien les arguments attendus.
+
+Les Stubs quant à eux permettent de modifier une fonction pour pouvoir remplacer son comportement.
+
+Les Mocks sont de fausses méthodes (comme les espions) avec un comportement prédéfini (comme les stubs) et avec des attentes préprogrammées

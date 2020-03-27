@@ -1,0 +1,43 @@
+const filter: IFilterKeys = { libId: ['libId1'], mediaId: [] };
+
+const filter: IFilterKeys = { libId: ['libId1', 'libId2'], mediaId: [] };
+
+const filter: IFilterKeys = { libId: ['libId1'], mediaId: ['mediaId1'] };
+
+
+
+
+const expectedAggregationsResult: IBufferKeysValues[] = [
+    { count: 15 },
+    { count: 25 },
+    { count: 30 },
+];
+
+const expectedAggregationsResult: IBufferKeysValues[] = {
+    count: [ 15, 25, 30 ]
+};
+
+const expectedAggregationsResult: IBufferKeysValues[] = [
+    { count: 15, duration: 100 },
+    { count: 25, duration: 150 },
+    { count: 30, duration: 200 },
+];
+
+
+const expectedAggregationsResult: IBufferKeysValues[] = {
+    count: [ 15, 25, 30 ],
+    duration: [100, 150, 200],
+    exist: [1, 1, 1],
+};
+
+Parce que les clefs peuvent contenir plusieurs propriétés (des sous-clefs, comme par exemple un libId ou un mediaId)
+ et c'est la responsabilité du buffer de choisir la manière qu'il va utiliser pour construire une clef unique à partir de ces sous clefs.
+Par exemple il pourrait faire :
+ libId1-mediaId1
+mais il pourrait aussi faire :
+mediaId1++++libId1
+si on utilise un tableau associatif à un niveau.
+Si tu choisissais d'utiliser des tableaux avec index numérique, ou une liste d'objet du type ou une map à plusieurs niveau peut être serais-tu heureuse d'avoir des clefs séparée
+
+Par exemple si tu choisissais d'utiliser une liste d'objet qui contiennent les clefs et les valeurs cela te donnerait une structure du type suivant :
+[  { libId:1, mediaId:2, count: 3 },  { libId:4, mediaId:5, count: 1 } ... ]
